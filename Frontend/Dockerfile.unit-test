@@ -1,0 +1,7 @@
+FROM markadams/chromium-xvfb-js
+
+COPY . .
+
+ENV NODE_ENV=development
+
+RUN npm install

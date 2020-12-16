@@ -1,0 +1,25 @@
+# See https://help.github.com/articles/ignoring-files/
+
+### Related to NodeJS
+# built code
+dist/
+
+# dependencies
+node_modules/
+
+# logs
+*.log
+
+# test coverage
+coverage/
+
+### Related to Go
+# binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# test binary - built with `go test -c`
+*.test
