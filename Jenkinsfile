@@ -3,7 +3,8 @@
 pipeline { /* The main definition where all our code will go */
  agent none
  environment { 
-   registryCredential = 'dockerhub_id' 
+    DOCKER_USER = credentials('dockerhub_id_user')
+    DOCKER_PASS = credentials('dockerhub_id_pass')
  }
 /*  
 Where our code will be executed. 
@@ -34,8 +35,7 @@ A: When applied at the top-level of the pipeline block no global agent will be a
        branch 'main'
      }
      steps {
-         sh "echo Hello"
-         sh "echo $registryCredential"
+         sh "docker login -u $DOCKER_USER -p $DOCKER_PASS"
          sh "docker build -t lauraehmata/todo-frontend:${GIT_COMMIT} -f Frontend/Dockerfile ./Frontend"
          sh "docker push lauraehmata/todo-frontend:${GIT_COMMIT}"
      }
