@@ -4,7 +4,7 @@ pipeline { /* The main definition where all our code will go */
  agent none
  environment { 
     DOCKER_USER = credentials('dockerhub_id_user')
-    DOCKER_PASS = credentials('dockerhub_id_pass')
+    DOCKER_PASS = credentials('dockerhub_id_password')
  }
 
  stages { /* The stages that will form our pipeline */
