@@ -24,9 +24,8 @@ A: When applied at the top-level of the pipeline block no global agent will be a
     Q: What are Groovy instructions?
     */
      steps {
-         sh "docker build -t frontend-tests -f Frontend/Dockerfile.unit-test ./Frontend"
-         sh "docker login --username lauraehmata"
-         sh "docker run frontend-tests"
+        sh "docker build -t frontend-tests -f Frontend/Dockerfile.unit-test ./Frontend"
+        sh "docker run frontend-tests"
      }
    }
    stage('Build frontend') {
@@ -35,8 +34,14 @@ A: When applied at the top-level of the pipeline block no global agent will be a
        branch 'main'
      }
      steps {
-         sh "docker build -t lauraehmata/todo-frontend:${GIT_COMMIT} -f Frontend/Dockerfile ./Frontend"
-         sh "docker push lauraehmata/todo-frontend:${GIT_COMMIT}"
+         // sh "docker build -t lauraehmata/todo-frontend:${GIT_COMMIT} -f Frontend/Dockerfile ./Frontend"
+         // sh "docker push lauraehmata/todo-frontend:${GIT_COMMIT}"
+         script {
+          dockerImage = docker.build "lauraehmata/todo-frontend:${GIT_COMMIT}"
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push("lauraehmata/todo-frontend:${GIT_COMMIT}")
+          }
+        }
      }
    }
    stage('Unit test backend') {
