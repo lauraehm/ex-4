@@ -6,15 +6,6 @@ pipeline { /* The main definition where all our code will go */
     DOCKER_USER = credentials('dockerhub_id_user')
     DOCKER_PASS = credentials('dockerhub_id_pass')
  }
-/*  
-Where our code will be executed. 
-We can specify multiple agents including special EC2 instances, 
-docker images, any available instance, or none at all.
- 
-
-Q: If you don't specify any agent, what does that mean? 
-A: When applied at the top-level of the pipeline block no global agent will be allocated for the entire Pipeline run and each stage section will need to contain its own agent section
-*/
 
  stages { /* The stages that will form our pipeline */
    stage('Unit test frontend.') {
