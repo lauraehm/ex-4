@@ -2,6 +2,9 @@
 
 pipeline { /* The main definition where all our code will go */
  agent none
+ environment { 
+   registryCredential = 'dockerhub_id' 
+ }
 /*  
 Where our code will be executed. 
 We can specify multiple agents including special EC2 instances, 
@@ -26,9 +29,6 @@ A: When applied at the top-level of the pipeline block no global agent will be a
      }
    }
    stage('Build frontend') {
-     environment { 
-      registryCredential = 'dockerhub_id' 
-     }
      agent any
      when { /*  Specifies a condition, in this case, some steps will only execute if run in the main branch. */
        branch 'main'
