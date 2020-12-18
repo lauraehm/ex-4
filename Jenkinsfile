@@ -16,7 +16,7 @@ A: When applied at the top-level of the pipeline block no global agent will be a
 */
 
  stages { /* The stages that will form our pipeline */
-   stage('Unit test frontend') {
+   stage('Unit test frontend.') {
      agent any
 
     /*  Steps that our pipeline will execute, this can be groovy instructions or shell commands using the sh instruction. 
