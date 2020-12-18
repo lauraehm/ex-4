@@ -35,7 +35,7 @@ A: When applied at the top-level of the pipeline block no global agent will be a
      }
      steps {
          sh "echo Hello"
-         sh "echo $dockerhub_id"
+         sh "echo $registryCredential"
          sh "docker build -t lauraehmata/todo-frontend:${GIT_COMMIT} -f Frontend/Dockerfile ./Frontend"
          sh "docker push lauraehmata/todo-frontend:${GIT_COMMIT}"
      }
