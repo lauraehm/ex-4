@@ -35,12 +35,12 @@ A: When applied at the top-level of the pipeline block no global agent will be a
      }
      steps {
         sh "docker build -t lauraehmata/todo-frontend:${GIT_COMMIT} -f Frontend/Dockerfile ./Frontend"
-        sh "docker push lauraehmata/todo-frontend:${GIT_COMMIT}"
+        //  sh "docker push lauraehmata/todo-frontend:${GIT_COMMIT}"
         //  script {
         //   dockerImage = docker.build "lauraehmata/todo-frontend:${GIT_COMMIT}"
-        //   docker.withRegistry( '', registryCredential ) {
-        //     dockerImage.push("lauraehmata/todo-frontend:${GIT_COMMIT}")
-        //   }
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push("lauraehmata/todo-frontend:${GIT_COMMIT}")
+          }
         // }
      }
    }
