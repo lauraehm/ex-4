@@ -2,10 +2,10 @@
 
 pipeline { /* The main definition where all our code will go */
  agent none
- /*environment { 
+ environment { 
     DOCKER_USER = credentials('dockerhub_id_user')
     DOCKER_PASS = credentials('dockerhub_id_password')
- }*/
+ }
 
  stages { /* The stages that will form our pipeline */
    stage('Unit test frontend.') {
