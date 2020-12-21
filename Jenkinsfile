@@ -12,8 +12,6 @@ pipeline { /* The main definition where all our code will go */
      agent any
 
     /*  Steps that our pipeline will execute, this can be groovy instructions or shell commands using the sh instruction. 
-    
-    Q: What are Groovy instructions?
     */
      steps {
         sh "docker build -t frontend-tests -f Frontend/Dockerfile.unit-test ./Frontend"
